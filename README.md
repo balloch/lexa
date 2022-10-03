@@ -18,6 +18,14 @@ Official implementation of the [Lexa](https://orybkin.github.io/lexa/) agent fro
 ### Clone
 Clone this repo and the [lexa-benchmark](https://github.com/orybkin/lexa-benchmark) repo to a directory. If cloning these repositories using command line yield any errors, make sure to just download the zip folder for them.
 
+```
+git clone https://github.com/balloch/lexa.git
+git clone https://github.com/orybkin/lexa-benchmark
+```
+
+### Install GLEW
+If GLEW is not already installed, install it using `sudo apt-get install libglew-dev`. Also install the following libraries for mujoco: `sudo apt install libosmesa6-dev libgl1-mesa-glx libglfw3 patchelf`.
+
 ### Setup Mujoco
 
 Use [this link](https://www.roboti.us/download.html) to download mujoco200 for linux and unzip the folder into `~/.mujoco/mujoco200`
@@ -29,7 +37,7 @@ Then put the activation key from [this link](https://www.roboti.us/license.html)
 Add the following lines to the `~/.bashrc` file:
 
 ```
-export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/home/ei-lab/.mujoco/mujoco200/bin
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:~/.mujoco/mujoco200/bin
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/lib/nvidia
 
 export PYTHONPATH=<path to lexa repo>/lexa:<path to lexa-benchmark repo>
@@ -41,7 +49,7 @@ export MJKEY_PATH=~/.mujoco/mjkey.txt
 export LD_PRELOAD=/usr/lib/x86_64-linux-gnu/libGLEW.so
 ```
 
-This will setup library paths, python path, mujoco paths, and mujoco rendering variables.
+This will setup library paths, python path, mujoco paths, and mujoco rendering variables. Then restart your terminal or run `source ~/.bashrc`
 
 ### Setup Conda environment
 Create the conda environment by running : 
@@ -49,6 +57,15 @@ Create the conda environment by running :
 ```
 conda env create -f environment.yml
 ```
+
+### Troubleshooting
+
+If this error comes up:
+```
+libstdc++.so.6: version `GLIBCXX_3.4.29' not found
+```
+
+try a solution similar to the one in [this link](https://github.com/pybind/pybind11/discussions/3453)
 
 **WARNING!** Make sure to use the right python and mujoco version. The robobin environment code is known to break with other versions. Other environments might or might not work.
 
@@ -66,6 +83,11 @@ where method can be `lexa_temporal`, `lexa_cosine`, `ddl`, `diayn` or `gcsl`
 Supported tasks are `dmc_walker_walk`, `dmc_quadruped_run`, `robobin`, `kitchen`, `joint`
 
 To view the graphs and gifs during training, run `tensorboard --logdir <log path>`
+
+Example:
+```
+python train.py --configs defaults lexa_temporal --task dmc_walker_walk --logdir ~/logdir/lexa_temporal_walker
+```
 
 
 ## Bibtex

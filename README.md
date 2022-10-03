@@ -23,7 +23,7 @@ git clone https://github.com/balloch/lexa.git
 git clone https://github.com/orybkin/lexa-benchmark
 ```
 
-### Install GLEW
+### Install Dependencies
 If GLEW is not already installed, install it using `sudo apt-get install libglew-dev`. Also install the following libraries for mujoco: `sudo apt install libosmesa6-dev libgl1-mesa-glx libglfw3 patchelf`.
 
 ### Setup Mujoco

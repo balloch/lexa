@@ -15,23 +15,46 @@ Official implementation of the [Lexa](https://orybkin.github.io/lexa/) agent fro
 
 ## Setup
 
+### Clone
+Clone this repo and the [lexa-benchmark](https://github.com/orybkin/lexa-benchmark) repo to a directory. If cloning these repositories using command line yield any errors, make sure to just download the zip folder for them.
+
+### Setup Mujoco
+
+Use [this link](https://www.roboti.us/download.html) to download mujoco200 for linux and unzip the folder into `~/.mujoco/mujoco200`
+
+Then put the activation key from [this link](https://www.roboti.us/license.html) into the this directory: `~/.mujoco/mujoco200/bin`
+
+### Setup Env Variables
+
+Add the following lines to the `~/.bashrc` file:
+
+```
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/home/ei-lab/.mujoco/mujoco200/bin
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/lib/nvidia
+
+export PYTHONPATH=<path to lexa repo>/lexa:<path to lexa-benchmark repo>
+
+export MUJOCO_RENDERER=egl; export MUJOCO_GL=egl
+export MJLIB_PATH=~/.mujoco/mujoco200/bin/libmujoco200.so
+export MJKEY_PATH=~/.mujoco/mjkey.txt
+
+export LD_PRELOAD=/usr/lib/x86_64-linux-gnu/libGLEW.so
+```
+
+This will setup library paths, python path, mujoco paths, and mujoco rendering variables.
+
+### Setup Conda environment
 Create the conda environment by running : 
 
 ```
 conda env create -f environment.yml
 ```
 
-Clone the [lexa-benchmark](https://github.com/orybkin/lexa-benchmark) repo, and modify the python path   
-`export PYTHONPATH=<path to lexa-training>/lexa:<path to lexa-benchmark>`  
-
-Export the following variables for rendering  
-`export MUJOCO_RENDERER=egl; export MUJOCO_GL=egl`
-
 **WARNING!** Make sure to use the right python and mujoco version. The robobin environment code is known to break with other versions. Other environments might or might not work.
 
 ## Training
 
-First source the environment : `source activate lexa`
+First source the environment : `conda activate lexa`
 
 For training, run : 
 

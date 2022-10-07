@@ -49,7 +49,7 @@ export MJKEY_PATH=~/.mujoco/mjkey.txt
 export LD_PRELOAD=/usr/lib/x86_64-linux-gnu/libGLEW.so
 ```
 
-This will setup library paths, python path, mujoco paths, and mujoco rendering variables. Then restart your terminal or run `source ~/.bashrc`
+This will setup library paths, python path, mujoco paths, and mujoco rendering variables. Then restart your terminal or run `source ~/.bashrc`. Note that the path to nvidia (/usr/lib/nvidia) might be in a different place. For example, /usr/lib/nvidia-460.
 
 ### Setup Conda environment
 Create the conda environment by running : 

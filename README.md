@@ -30,7 +30,7 @@ If GLEW is not already installed, install it using `sudo apt-get install libglew
 
 Use [this link](https://www.roboti.us/download/mujoco200_linux.zip) to download mujoco200 for linux and unzip the folder into `~/.mujoco/mujoco200`
 
-Then put the activation key from [this link](https://www.roboti.us/file/mjkey.txt) into the this directory: `~/.mujoco/mujoco200/bin`
+Then put the activation key from [this link](https://www.roboti.us/file/mjkey.txt) into the this directory: `~/.mujoco/`
 
 ### Setup Env Variables
 

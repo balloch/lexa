@@ -56,6 +56,14 @@ Create the conda environment by running :
 
 ```
 conda env create -f environment.yml
+conda activate lexa
+```
+
+### Install MiniGrid
+Install the mini grid environment using:
+
+```
+pip install MiniGrid gym-minigrid
 ```
 
 ### Troubleshooting

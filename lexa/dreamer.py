@@ -8,6 +8,8 @@ import sys
 import warnings
 import pickle
 
+import gym
+import gym_minigrid
 import numpy as np
 import ruamel.yaml as yaml
 import tensorflow as tf
@@ -230,6 +232,10 @@ def make_env(config, logger, mode, train_eps, eval_eps, use_goal_idx=False, log_
     env = envs.MultiplexedEnv([kitchen_env, robobin_env] + dmc_envs, config.action_repeat, config.size, use_goal_idx, log_per_goal)
     env = envs.PadActions(env, list(_env.action_space for _env in env.envs))
     env = wrappers.NormalizeActions(env)
+
+  elif config.task.startswith('MiniGrid'):
+    env = gym.make(config.task)
+    env = gym_minigrid.wrappers.RGBImgObsWrapper(env, tile_size=8)
 
   else:
     raise NotImplementedError(config.task)

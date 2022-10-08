@@ -96,7 +96,10 @@ Example:
 ```
 python train.py --configs defaults lexa_temporal --task dmc_walker_walk --logdir ~/logdir/lexa_temporal_walker
 ```
-
+or on a minigrid environment
+```
+python train.py --configs defaults lexa_temporal --task MiniGrid-DoorKey-8x8-v0 --logdir ~/logdir/lexa_minigrid
+```
 
 ## Bibtex
 If you find this code useful, please cite:

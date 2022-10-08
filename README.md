@@ -63,7 +63,7 @@ conda activate lexa
 Install the mini grid environment using:
 
 ```
-pip install MiniGrid gym-minigrid
+pip install gym-minigrid
 ```
 
 ### Troubleshooting

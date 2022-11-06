@@ -87,8 +87,7 @@ class CollectDataset:
     if done:
       episode = {k: [t[k] for t in self._episode] for k in self._episode[0]}
       episode = {k: self._convert(v) for k, v in episode.items()}
-      if hasattr(self._env, 'get_goal_idx'):
-        episode['idx_repeated'] = np.ones(len(episode['reward']), dtype=np.int32)*self._env.get_goal_idx()
+      episode['idx_repeated'] = np.ones(len(episode['reward']), dtype=np.int32)*self._env.get_goal_idx()
       info['episode'] = episode
       for callback in self._callbacks:
         callback(episode)

@@ -111,8 +111,8 @@ class CollectDataset:
     elif np.issubdtype(value.dtype, np.uint8):
       dtype = np.uint8
     else:
-    #   raise NotImplementedError(value.dtype)
-        return value
+      raise NotImplementedError(value.dtype)
+        # return value
     return value.astype(dtype)
 
 

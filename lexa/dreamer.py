@@ -16,6 +16,8 @@ import tensorflow as tf
 from tensorflow.keras.mixed_precision import experimental as prec
 from tensorflow_probability import distributions as tfd
 
+import env_minigrid
+
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'
 tf.get_logger().setLevel('ERROR')
 warnings.filterwarnings('ignore', '.*box bound precision lowered.*')
@@ -234,8 +236,7 @@ def make_env(config, logger, mode, train_eps, eval_eps, use_goal_idx=False, log_
     env = wrappers.NormalizeActions(env)
 
   elif config.task.startswith('MiniGrid'):
-    env = gym.make(config.task)
-    env = gym_minigrid.wrappers.RGBImgObsWrapper(env, tile_size=8)
+    env = env_minigrid.MiniGrid(config.task)
 
   else:
     raise NotImplementedError(config.task)

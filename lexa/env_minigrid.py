@@ -18,6 +18,8 @@ class MiniGrid(BenchEnv):
         self._env.reset()
         self.goal_idx = 0
 
+        self.goals = [0]
+
     def set_goal_idx(self, idx):
         self.goal_idx = idx
 
@@ -25,7 +27,22 @@ class MiniGrid(BenchEnv):
         return self.goal_idx
 
     def get_goals(self):
-        return []
+        return self.goals
 
-    def _get_obs(self, state):
-        
+    def step(self, action):
+        return self._env.step(action)
+
+    def reset(self):
+        self._env.reset()
+
+    def __get_obs(self):
+        pass
+
+    def compute_reward(self):
+        pass
+
+    def compute_success(self, goal=None):
+        pass
+
+    def render_goal(self):
+        pass

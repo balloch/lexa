@@ -46,13 +46,17 @@ class MiniGrid(BenchEnv):
         self._env.reset()
 
     def __get_obs(self):
+        print("HJLKSDJFLKSDJFLKSDJFKL_____________________________________")
         pass
 
     def compute_reward(self):
+        print("HJLKSDJFLKSDJFLKSDJFKL_____________________________________")
         pass
 
     def compute_success(self, goal=None):
+        print("HJLKSDJFLKSDJFLKSDJFKL_____________________________________")
         pass
 
     def render_goal(self):
+        print("HJLKSDJFLKSDJFLKSDJFKL_____________________________________")
         pass

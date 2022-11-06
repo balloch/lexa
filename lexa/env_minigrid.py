@@ -7,6 +7,8 @@ class MiniGrid(BenchEnv):
 
     def __init__(self, env_name, action_repeat=1, use_goal_idx=False, log_per_goal=False, width=64) -> None:
         super().__init__(action_repeat, width)
+
+        self._action_repeat = action_repeat
         
         self.use_goal_idx = use_goal_idx
         self.log_per_goal = log_per_goal
@@ -30,7 +32,15 @@ class MiniGrid(BenchEnv):
         return self.goals
 
     def step(self, action):
-        return self._env.step(action)
+        total_reward = 0.0
+        obs = None
+        done = None
+        info = None
+        for _ in range(self._action_repeat):
+            obs, reward, done, info = self._env.step(action)
+            total_reward += reward
+            if done: break
+        return obs, total_reward, done, info
 
     def reset(self):
         self._env.reset()

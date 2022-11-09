@@ -1,0 +1,1 @@
+rm -rf ~/logdir/lexa_mini*

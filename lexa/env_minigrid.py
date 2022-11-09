@@ -2,6 +2,8 @@ from envs.base_envs import BenchEnv
 import gym_minigrid
 import gym
 
+import numpy as np
+
 
 class MiniGrid(BenchEnv):
 
@@ -38,6 +40,7 @@ class MiniGrid(BenchEnv):
         info = None
         for _ in range(self._action_repeat):
             obs, reward, done, info = self._env.step(action)
+            obs = self.__process_obs(obs)
             total_reward += reward
             if done: break
         return obs, total_reward, done, info
@@ -46,6 +49,14 @@ class MiniGrid(BenchEnv):
         obs = self._env.reset()
         if obs is None:
             obs = {}
+        return self.__process_obs(obs)
+
+    def __process_obs(self, obs):
+        obs = {k:v for k, v in obs.items() if any(
+                np.issubdtype(np.array(v).dtype, t)
+                for t in [np.floating, np.signedinteger, np.uint8]
+            )
+        }
         return obs
 
     def __get_obs(self):

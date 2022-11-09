@@ -112,7 +112,6 @@ class CollectDataset:
       dtype = np.uint8
     else:
       raise NotImplementedError(value.dtype)
-        # return value
     return value.astype(dtype)
 
 

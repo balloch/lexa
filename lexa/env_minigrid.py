@@ -43,7 +43,10 @@ class MiniGrid(BenchEnv):
         return obs, total_reward, done, info
 
     def reset(self):
-        self._env.reset()
+        obs = self._env.reset()
+        if obs is None:
+            obs = {}
+        return obs
 
     def __get_obs(self):
         pass

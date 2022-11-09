@@ -237,7 +237,6 @@ def make_env(config, logger, mode, train_eps, eval_eps, use_goal_idx=False, log_
 
   elif config.task.startswith('MiniGrid'):
     env = env_minigrid.MiniGrid(config.task)
-
   else:
     raise NotImplementedError(config.task)
   env = wrappers.TimeLimit(env, config.time_limit)
